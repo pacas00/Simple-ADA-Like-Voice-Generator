@@ -17,6 +17,7 @@ public partial class Form1 : Form
         public Form1()
         {
             InitializeComponent();
+            this.textBox1.Text = "This is a test of the text to speech API. This is a longer sentence for the purpose of testing speech speed.";
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -66,7 +67,8 @@ public partial class Form1 : Form
             // Select the type of audio file you want returned.
             AudioConfig config = new AudioConfig
             {
-                AudioEncoding = AudioEncoding.Mp3
+                AudioEncoding = AudioEncoding.OggOpus,
+                SpeakingRate = 1.02,
             };
 
             // Perform the Text-to-Speech request, passing the text input
@@ -80,9 +82,9 @@ public partial class Form1 : Form
 
             
             //Configure Save Dialog
-            this.saveFileDialog1.Filter = "MP3 Audio | *.mp3";
-            this.saveFileDialog1.DefaultExt = "mp3";
-            this.saveFileDialog1.FileName = "output.mp3";
+            this.saveFileDialog1.Filter = "Ogg Vorbis Audio | *.ogg";
+            this.saveFileDialog1.DefaultExt = "ogg";
+            this.saveFileDialog1.FileName = "output.ogg";
             this.saveFileDialog1.InitialDirectory = ".\\";
             
             DialogResult result = this.saveFileDialog1.ShowDialog();
@@ -97,7 +99,6 @@ public partial class Form1 : Form
             using (Stream output = saveFileDialog1.OpenFile())
             {
                 response.AudioContent.WriteTo(output);
-                Console.WriteLine($"Audio content written to file 'sample.mp3'");
             }
         }
 
