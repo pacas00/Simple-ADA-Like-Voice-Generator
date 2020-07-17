@@ -1,5 +1,7 @@
 # Simple-ADA-Like-Voice-Generator
 
+NOTE: Uses Google's Text To Speech API.
+
 What does this do.
 
 This is a helper program to generate the audio samples needed to create ADA like voice lines.
